@@ -1,8 +1,8 @@
 # Integrantes
 
-- Sergio Pardo [@SergioPardo55]{https://github.com/SergioPardo55}
-- Juan Diego Calixto [@jcalixto202020774]{https://github.com/jcalixto202020774}
-- Juan Diego Yepes [@juanyepesp]{https://github.com/juanyepesp}
+- Sergio Pardo [@SergioPardo55](https://github.com/SergioPardo55)
+- Juan Diego Calixto [@jcalixto202020774](https://github.com/jcalixto202020774)
+- Juan Diego Yepes [@juanyepesp](https://github.com/juanyepesp)
 
 
 # Cómo ejecutar este programa:
