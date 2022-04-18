@@ -1,21 +1,13 @@
+# Juan Diego Yepes - 202022391
+# Juan Diego Calixto - 202020774
+# Sergio Pardo Gutiérrez - 202025720
+
 import math
+import sys
 
+vertices = []
+edges = []
 
-# vertices = [0,1,2,3,4]
-# edges = [
-#     [False,True,True,False,False],
-#     [True,False,True,True,False],
-#     [True,False,False,True,True],
-#     [True,False,False,False,True],
-#     [True,True,True,True,False]
-#     ]
-
-# vertices = [0,1,2]
-# edges = [
-#     [False,True,False],
-#     [False,False,True],
-#     [False,False,False]
-#     ]
 
 def depthFirst(start: int):
     answer = []
@@ -37,3 +29,28 @@ def depthFirst(start: int):
         
     return answer
 
+
+lines=sys.stdin.readlines()
+c = 0
+while c<len(lines):
+    line = lines[c].replace("\n","").split("\t")
+    nextInt = 0
+    lineEdg = []
+    for value in line:
+        valInt = int(value)
+
+        if nextInt not in vertices:
+            vertices.append(nextInt) # se puede hacer de forma más eficiente
+
+        if (valInt > 0):
+            lineEdg.append(True)
+        else:
+            lineEdg.append(False)
+        
+        nextInt += 1 
+
+    edges.append(lineEdg)
+    c+=1
+
+
+print(depthFirst(0))
