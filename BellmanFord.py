@@ -6,9 +6,9 @@ import sys
 import math
 import time
 
-def dijkstra(matrix:list)->list:
+def BellmanFord(matrix:list)->list:
     '''
-    Ejecuta el algoritmo de Dijkstra desde todos los nodos base para encontrar el camino más corto 
+    Ejecuta el algoritmo de BellmanFord desde todos los nodos base para encontrar el camino más corto 
     a todos los demás nodos.
     Retorna una matriz de costos mínimos para cada nodo de la matriz.
     '''
@@ -47,12 +47,9 @@ def dijkstra(matrix:list)->list:
                     mini=value
                     index = r
             r+=1
-        #Se revisa si el nodo está conectado con algún otro
         if index != -1:
             go = True
             r=0
-            paths.pop(index)
-            #Se revisan los nuevos caminos a recorrer
             while r < colSize:
                 value = 0
                 if matrix[index][r] != -1 and matrix[index][r]!=0:
@@ -66,7 +63,6 @@ def dijkstra(matrix:list)->list:
                 r+=1
         else:
             go = False
-        #Se ejecuta el algoritmo de Dijkstra hasta que ya no hayan nodos por recorrer
         while go == True and bool(paths)!=False:
             pathKeys = paths.keys()
             minVal = math.inf
@@ -77,7 +73,6 @@ def dijkstra(matrix:list)->list:
                     minPath=key
                     minVal = arrive[1]
             minValues[k][minPath]=minVal
-            paths.pop(minPath)
             p=0
             while p < colSize:
                 val = 0
@@ -90,7 +85,7 @@ def dijkstra(matrix:list)->list:
                         else:
                             paths[p]=(minPath,val)
                 p+=1
-            if bool(paths)==False:
+            if True:
                 go=False
         k+=1
     return minValues
@@ -107,7 +102,7 @@ while c<len(lines):
         lineInt.append(valInt)
     matrix.append(lineInt)
     c+=1
-minValues = dijkstra(matrix)
+minValues = BellmanFord(matrix)
 for row in minValues:
     print(row)
 
