@@ -66,8 +66,11 @@ def dijkstra(matrix:list)->list:
                 r+=1
         else:
             go = False
+        #Se revisa que se hayan generado nuevos caminos
+        if bool(paths)==False:
+            go = False
         #Se ejecuta el algoritmo de Dijkstra hasta que ya no hayan nodos por recorrer
-        while go == True and bool(paths)!=False:
+        while go == True:
             pathKeys = paths.keys()
             minVal = math.inf
             minPath = None
@@ -99,7 +102,7 @@ def dijkstra(matrix:list)->list:
 matrix = []
 lines=sys.stdin.readlines()
 c = 0
-while c<len(lines):
+while c<len(lines) and lines[c]!="\n":
     line = lines[c].strip().replace("\n","").split("\t")
     lineInt = []
     for value in line:
