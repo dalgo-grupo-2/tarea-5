@@ -5,7 +5,6 @@
 import sys
 import math
 import time
-from typing import ParamSpecArgs
 
 def kruskal(matrix:list)->list:
     roads={}
@@ -22,7 +21,14 @@ def kruskal(matrix:list)->list:
                 k+=1
             j+=1
         i+=1
-    mins = mergeSort(mins,roads)
+
+    # mins = mergeSort(mins,roads)
+    # print(mins)
+
+    aam = sorted(list(roads.items()),key=lambda x:x[1][0])
+    mins = [i[0] for i in aam]
+    # print(mins)
+
     partition = createPartition(sizeV)
     roadsNeeded=[]
     i=0
@@ -65,39 +71,39 @@ def union(v1:int, v2:int, partition)->None:
         if (partition[s1]["height"] == partition[s2]["height"]):
             partition[s2]["height"] += 1; #solo se actualiza la altura del representante. (están mal calculados pero es suficiente)
 
-def mergeSort(mins:dict,edges:dict)->list:
-    #Tomado de https://www.educative.io/edpresso/merge-sort-in-python
-    if len(mins) > 1:
-        mid = len(mins) // 2
-        left = mins[:mid]
-        right = mins[mid:]
+# def mergeSort(mins:dict,edges:dict)->list:
+#     #Tomado de https://www.educative.io/edpresso/merge-sort-in-python
+#     if len(mins) > 1:
+#         mid = len(mins) // 2
+#         left = mins[:mid]
+#         right = mins[mid:]
 
-        mergeSort(left,edges)
-        mergeSort(right,edges)
+#         mergeSort(left,edges)
+#         mergeSort(right,edges)
 
-        i = 0
-        j = 0
-        k = 0
+#         i = 0
+#         j = 0
+#         k = 0
         
-        while i < len(left) and j < len(right):
-            if edges[left[i]] <= edges[right[j]]:
-              mins[k] = left[i]
-              i += 1
-            else:
-                mins[k] = right[j]
-                j += 1
-            k += 1
+#         while i < len(left) and j < len(right):
+#             if edges[left[i]] <= edges[right[j]]:
+#               mins[k] = left[i]
+#               i += 1
+#             else:
+#                 mins[k] = right[j]
+#                 j += 1
+#             k += 1
 
-        while i < len(left):
-            mins[k] = left[i]
-            i += 1
-            k += 1
+#         while i < len(left):
+#             mins[k] = left[i]
+#             i += 1
+#             k += 1
 
-        while j < len(right):
-            mins[k]=right[j]
-            j += 1
-            k += 1
-    return mins
+#         while j < len(right):
+#             mins[k]=right[j]
+#             j += 1
+#             k += 1
+#     return mins
 
 matrix = []
 lines=sys.stdin.readlines()
