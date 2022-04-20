@@ -25,9 +25,9 @@ Parte 1: Para probar los algoritmos de Dijkstra, Bellman Ford y Floyd Warshall p
  	 distances o distances con sufijo costosminimos. Además de esto, hay 2 archivos adicionales, 
 	 distancesDisconnected.txt y distances5ciclo, para probar casos especiales en estos algoritmos. 
 
-Parte 2:
+Parte 2: 
 
-Parte 3:
+Parte 3: Para probar el dfs puede utilizar los archivos de distances, como por ejemplo distances5 y distances6, que deberían retornar que hay un ciclo y dar un orden topológico respectivamente.
 
 Parte 4: En el pdf, en el apartado casos de prueba, se explica cómo correr y probar este programa.
 
