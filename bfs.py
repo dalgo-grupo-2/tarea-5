@@ -32,9 +32,6 @@ def bfs(matrix):
         vertex +=1
     return answer
 
-            
-
-
 matrix = []
 lines=sys.stdin.readlines()
 for line in lines:

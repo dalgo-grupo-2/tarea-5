@@ -38,7 +38,7 @@ while c<len(lines):
         valInt = int(value)
 
         if nextInt not in vertices:
-            vertices.append(nextInt) # se puede hacer de forma más eficiente
+            vertices.append(nextInt)
 
         if (valInt > 0):
             lineEdg.append(True)
