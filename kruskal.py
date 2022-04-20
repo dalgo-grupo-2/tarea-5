@@ -72,30 +72,22 @@ def mergeSort(mins:dict,edges:dict)->list:
         left = mins[:mid]
         right = mins[mid:]
 
-        # Recursive call on each half
         mergeSort(left,edges)
         mergeSort(right,edges)
 
-        # Two iterators for traversing the two halves
         i = 0
         j = 0
-        
-        # Iterator for the main list
         k = 0
         
         while i < len(left) and j < len(right):
             if edges[left[i]] <= edges[right[j]]:
-              # The value from the left half has been used
               mins[k] = left[i]
-              # Move the iterator forward
               i += 1
             else:
                 mins[k] = right[j]
                 j += 1
-            # Move to the next slot
             k += 1
 
-        # For all the remaining values
         while i < len(left):
             mins[k] = left[i]
             i += 1
@@ -125,7 +117,7 @@ for road in roadsNeeded:
     cost = roads[road][0]
     origin = roads[road][1]
     destiny = roads[road][2]
-    print("Se necesita la autopista: {} que va desde el nodo {} hasta el nodo {} con un costo de {}".format(road,origin,destiny,cost))
+    print("Se necesita la autopista de costo {} que va desde el nodo {} hasta el nodo {} ".format(cost,origin,destiny))
 
 """
 for row in minValues[0]:
