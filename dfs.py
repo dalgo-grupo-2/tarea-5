@@ -8,7 +8,6 @@ import sys
 vertices = []
 edges = []
 
-
 def depthFirst(start: int):
     answer = []
     stack = []
@@ -26,7 +25,6 @@ def depthFirst(start: int):
             if (edges[next][i] and not visited[i]):
                 stack.append(i)
                 visited[i] = True
-        
     return answer
 
 
@@ -52,5 +50,20 @@ while c<len(lines):
     edges.append(lineEdg)
     c+=1
 
+maxLen = 0
+resp = []
+listAnsw = []
 
-print(depthFirst(0))
+for eachVertex in vertices:
+    answer = depthFirst(eachVertex)
+    if type(answer) == type([]):
+        listAnsw.append(answer)
+    else:
+        resp = True
+
+for ans in listAnsw:
+    if maxLen < len(ans):
+        maxLen = len(ans)
+        resp = ans
+
+print(resp)
