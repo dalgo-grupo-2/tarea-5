@@ -1,46 +1,30 @@
-# Juan Diego Yepes - 202022391]
-# Juan Diego Calixto - 202020774
-# Sergio Pardo Gutiérrez - 202025720
-
 import sys
 import math
 import time
 
-def kruskal(matrix:list)->list:
+def kruskal(matrix:list):
     roads={}
-    mins=[]
-    sizeV = len(matrix)
     i,j,k=0,0,0
-    while i < sizeV:
+    while i < len(matrix):
         j=i
-        while j < sizeV:
+        while j < len(matrix):
             cost = matrix[i][j]
             if cost != 0 and cost != -1:
                 roads[k]=[cost,i,j]
-                mins.append(k)
                 k+=1
             j+=1
         i+=1
 
-    # mins = mergeSort(mins,roads)
-    # print(mins)
-
-    aam = sorted(list(roads.items()),key=lambda x:x[1][0])
-    mins = [i[0] for i in aam]
-    # print(mins)
-
-    partition = createPartition(sizeV)
+    roads = dict(sorted(list(roads.items()),key=lambda x:x[1][0]))
+    partition = createPartition(len(matrix))
     roadsNeeded=[]
-    i=0
-    while i<len(mins):
-        road = mins[i]
-        info = roads[road]
-        startNode = info[1]
-        endNode = info[2]
-        if sameSubset(startNode,endNode,partition)==False:
-            roadsNeeded.append(road)
-            union(startNode,endNode,partition)
-        i+=1
+    for i in roads:
+        start = roads[i][1]
+        end = roads[i][2]
+        if not sameSubset(start, end, partition):
+            roadsNeeded.append(i)
+            union(start, end, partition)
+    print(roads)
     return roadsNeeded, roads
 
 def createPartition(sizeV:int)->dict:
@@ -71,40 +55,6 @@ def union(v1:int, v2:int, partition)->None:
         if (partition[s1]["height"] == partition[s2]["height"]):
             partition[s2]["height"] += 1; #solo se actualiza la altura del representante. (están mal calculados pero es suficiente)
 
-# def mergeSort(mins:dict,edges:dict)->list:
-#     #Tomado de https://www.educative.io/edpresso/merge-sort-in-python
-#     if len(mins) > 1:
-#         mid = len(mins) // 2
-#         left = mins[:mid]
-#         right = mins[mid:]
-
-#         mergeSort(left,edges)
-#         mergeSort(right,edges)
-
-#         i = 0
-#         j = 0
-#         k = 0
-        
-#         while i < len(left) and j < len(right):
-#             if edges[left[i]] <= edges[right[j]]:
-#               mins[k] = left[i]
-#               i += 1
-#             else:
-#                 mins[k] = right[j]
-#                 j += 1
-#             k += 1
-
-#         while i < len(left):
-#             mins[k] = left[i]
-#             i += 1
-#             k += 1
-
-#         while j < len(right):
-#             mins[k]=right[j]
-#             j += 1
-#             k += 1
-#     return mins
-
 matrix = []
 lines=sys.stdin.readlines()
 c = 0
@@ -123,9 +73,4 @@ for road in roadsNeeded:
     cost = roads[road][0]
     origin = roads[road][1]
     destiny = roads[road][2]
-    print("Se necesita la autopista de costo {} que va desde el nodo {} hasta el nodo {} ".format(cost,origin,destiny))
-
-"""
-for row in minValues[0]:
-    print(row,minValues[1][row])
-"""
+    print("Se necesita la doble vía de costo {} que va desde el nodo {} hasta el nodo {} ".format(cost,origin,destiny))
