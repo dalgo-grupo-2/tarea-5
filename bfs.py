@@ -1,4 +1,10 @@
+# Juan Diego Yepes - 202022391
+# Juan Diego Calixto - 202020774
+# Sergio Pardo Gutiérrez - 202025720
+
+
 import sys
+import time
 
 def bfs(matrix):
     visited = [False]*(len(matrix))
